@@ -149,8 +149,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     function newPlayer() {
-        //... code for clearing the username cookie and updating the UI
+        setCookie("username", "", -1); 
+        checkUsername(); 
     }
+
     function calculateScore() {
         let score = 0;
     const questions = document.querySelectorAll("#question-container div");
