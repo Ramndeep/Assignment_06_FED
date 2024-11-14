@@ -149,8 +149,19 @@ document.addEventListener("DOMContentLoaded", function () {
         //... code for clearing the username cookie and updating the UI
     }
     function calculateScore() {
-        //... code for calculating the score
+        let score = 0;
+    const questions = document.querySelectorAll("#question-container div");
+
+    questions.forEach((questionDiv, index) => {
+        const selectedAnswer = questionDiv.querySelector(`input[name="answer${index}"]:checked`);
+        if (selectedAnswer && selectedAnswer.hasAttribute("data-correct")) {
+            score += 1;
+        }
+    });
+
+    return score;
     }
+    
     function displayScores() {
         //... code for displaying scores from localStorage
     }
