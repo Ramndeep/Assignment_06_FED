@@ -100,9 +100,22 @@ document.addEventListener("DOMContentLoaded", function () {
      * Handles the trivia form submission.
      * @param {Event} event - The submit event.
      */
+    
     function handleFormSubmit(event) {
         event.preventDefault();
-        //... form submission logic including setting cookies and calculating score
+    const usernameInput = document.getElementById("username");
+    let username = getCookie("username");
+
+    if (!username && usernameInput.value.trim()) {
+        username = usernameInput.value.trim();
+        setCookie("username", username, 7);
+    }
+
+    const score = calculateScore();
+    saveScore(username, score);
+
+    fetchQuestions();
+    displayScores();
     }
     
     function checkUsername() {
