@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const newPlayerButton = document.getElementById("new-player");
 
     // Initialize the game
-    // checkUsername(); Uncomment once completed
+    checkUsername(); 
     fetchQuestions();
     displayScores();
 
