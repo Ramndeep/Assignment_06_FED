@@ -143,8 +143,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function saveScore(username, score) {
-        //... code for saving the score to localStorage
+        const scores = JSON.parse(localStorage.getItem("scores")) || [];
+    scores.push({ username, score });
+    localStorage.setItem("scores", JSON.stringify(scores));
     }
+    
     function newPlayer() {
         //... code for clearing the username cookie and updating the UI
     }
@@ -163,6 +166,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     function displayScores() {
-        //... code for displaying scores from localStorage
+        const scoresTableBody = document.querySelector("#score-table tbody");
+    scoresTableBody.innerHTML = "";
+
+    const scores = JSON.parse(localStorage.getItem("scores")) || [];
+    scores.forEach(({ username, score }) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${username}</td><td>${score}</td>`;
+        scoresTableBody.appendChild(row);
+    });
     }
 });
